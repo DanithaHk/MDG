@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="656.0" prefWidth="1242.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashbordController">
+   <children>
+      <Rectangle arcHeight="2.0" arcWidth="5.0" fill="#313d52" height="39.0" layoutX="147.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1098.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#313d52" height="656.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="157.0" />
+      <AnchorPane fx:id="Load" layoutX="157.0" layoutY="38.0" prefHeight="618.0" prefWidth="1085.0">
+         <children>
+            <TableView fx:id="tblAttendence" layoutX="46.0" layoutY="206.0" opacity="0.8" prefHeight="375.0" prefWidth="1004.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="148.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="306.0" text="Name" />
+                  <TableColumn fx:id="colDate" prefWidth="194.0" text="Date" />
+                  <TableColumn fx:id="colPersentOrNot" prefWidth="178.0" text="Present Or Not" />
+                  <TableColumn fx:id="colEmployeeId" prefWidth="203.0" text="Employee Id" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="102.0" layoutY="49.0" onAction="#btaddNewOrder" prefHeight="98.0" prefWidth="135.0" style="-fx-background-color: #47B5FF;" text="ADD NEW ORDER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../asserts.icon/icons8-add-shopping-cart-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="299.0" layoutY="49.0" onAction="#btaddNewClient" prefHeight="98.0" prefWidth="135.0" style="-fx-background-color: #f1c232;" text="ADD NEW CLIENT" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="46.0">
+                     <image>
+                        <Image url="@../asserts.icon/icons8-add-user-male-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="869.0" layoutY="49.0" onAction="#btaddNewProduct" prefHeight="98.0" prefWidth="135.0" style="-fx-background-color: #9e84a0;" text="ADD NEW PRODUCT" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="48.0">
+                     <image>
+                        <Image url="@../asserts.icon/icons8-product-24.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="495.0" layoutY="49.0" onAction="#btaddNewEmployee" prefHeight="98.0" prefWidth="135.0" style="-fx-background-color: #28bab7;" text="ADD NEW EMPLOYEE" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="48.0">
+                     <image>
+                        <Image url="@../asserts.icon/icons8-employee-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="684.0" layoutY="49.0" onAction="#btaddNewTraget" prefHeight="98.0" prefWidth="135.0" style="-fx-background-color: #cf2d31; -fx-background-image: blue;" text="ADD NEW TARGET" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="46.0">
+                     <image>
+                        <Image url="@../asserts.icon/icons8-target-24.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </padding>
+            </JFXButton>
+         </children></AnchorPane>
+      <JFXButton fx:id="Attendece" layoutX="8.0" layoutY="94.0" onAction="#btattendece" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Attendece">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-attendance-16.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Orders" buttonType="RAISED" layoutX="8.0" layoutY="140.0" onAction="#Orders" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Orders     ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8%20order.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Salary" buttonType="RAISED" layoutX="8.0" layoutY="188.0" onAction="#btSalary" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Salary      ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-salary-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Clients" buttonType="RAISED" layoutX="9.0" layoutY="283.0" onAction="#btClients" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: white;" text="Clients      ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-client-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Products" buttonType="RAISED" layoutX="8.0" layoutY="236.0" onAction="#btProducts" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Products  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-product-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Transport" buttonType="RAISED" layoutX="8.0" layoutY="381.0" onAction="#btTransport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Transport ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-loading-truck-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Suppliers" buttonType="RAISED" layoutX="8.0" layoutY="429.0" onAction="#btSuppliers" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Suppliers  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-client.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="477.0" onAction="#btTarget" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Target     ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-target-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Employee" buttonType="RAISED" layoutX="8.0" layoutY="332.0" onAction="#btEmployee" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Employee  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-employee.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="Material" buttonType="RAISED" layoutX="7.0" layoutY="528.0" onAction="#btMaterial" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Material   ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-clothes-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="920.0" layoutY="1.0">
+         <image>
+            <Image url="@../asserts.icon/icons8-male-user-48.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="user" layoutX="965.0" layoutY="7.0" onAction="#userOnAction" opacity="0.81" prefHeight="25.0" prefWidth="94.0" promptText="user" />
+      <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="577.0" onAction="#btViewReport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="View Reports">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-graph-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="logout" buttonType="RAISED" layoutX="5.0" layoutY="620.0" onAction="#btloglout" prefHeight="27.0" prefWidth="135.0" style="-fx-background-color: red;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="lblDate" layoutX="1096.0" layoutY="6.0" opacity="0.81" prefHeight="25.0" prefWidth="101.0" promptText="Date" />
+      <Circle fill="#1fff52" layoutX="1082.0" layoutY="20.0" radius="7.0" stroke="#fff4f4" strokeType="INSIDE" strokeWidth="0.0" />
+      <ImageView accessibleRole="BUTTON" fitHeight="85.0" fitWidth="90.0" layoutX="27.0" layoutY="6.0" onMouseClicked="#logoClickedOnAction">
+         <image>
+            <Image url="@../asserts.icon/Black_and_Orange_Simple_Fashion_Brand_Logo-removebg-preview%20(2).png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

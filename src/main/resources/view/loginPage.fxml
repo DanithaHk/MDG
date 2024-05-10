@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginformController">
+    <children>
+      <ImageView fitHeight="609.0" fitWidth="612.0" layoutX="-3.0" layoutY="-6.0" opacity="0.89">
+         <image>
+            <Image url="@../asserts.icon/4787138_2505054 (2).jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="672.0" layoutY="91.0" prefHeight="32.0" prefWidth="78.0" text="Login" textAlignment="JUSTIFY" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="681.0" layoutY="145.0" prefHeight="19.0" prefWidth="68.0" text="Username:">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserId" layoutX="671.0" layoutY="167.0" prefHeight="30.0" prefWidth="300.0" promptText="UserId" style="-fx-border-color: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="681.0" layoutY="210.0" prefHeight="14.0" prefWidth="68.0" text="Password">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="730.0" layoutY="299.0" onAction="#btnLoginOnAction" prefHeight="32.0" prefWidth="201.0" style="-fx-background-color: #191919;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <PasswordField fx:id="txtPassword" layoutX="671.0" layoutY="230.0" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #073763;" />
+      <Label layoutX="821.0" layoutY="365.0" prefHeight="19.0" prefWidth="19.0" text="OR">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Line endX="127.0" layoutX="687.0" layoutY="374.0" opacity="0.82" startX="-58.0" />
+      <Line endX="108.0" layoutX="907.0" layoutY="374.0" opacity="0.82" startX="-55.33331298828125" />
+      <JFXButton buttonType="RAISED" layoutX="730.0" layoutY="400.0" onAction="#BnSignUp" prefHeight="32.0" prefWidth="201.0" style="-fx-background-color: #073763;" text="SignUp" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="235.0" fitWidth="318.0" layoutX="166.0" layoutY="184.0">
+         <image>
+            <Image url="@../asserts.icon/24758648_tailor_06-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="303.0" layoutY="171.0" stroke="#aba9a5" strokeType="OUTSIDE" strokeWidth="0.5" text="Garments">
+         <font>
+            <Font name="Bell MT" size="26.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9700000286102295" green="0.8497200012207031" blue="0.6693000197410583" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9686274528503418" green="0.8509804010391235" blue="0.6705882549285889" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+      <Text layoutX="235.0" layoutY="144.0" stroke="#aba9a6" strokeType="OUTSIDE" strokeWidth="0.5" text="MDG">
+         <font>
+            <Font name="Bell MT" size="34.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9686274528503418" green="0.8509804010391235" blue="0.6705882549285889" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9686274528503418" green="0.8509804010391235" blue="0.6705882549285889" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+    </children>
+</AnchorPane>

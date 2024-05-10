@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootSupplier" prefHeight="618.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SupplierpageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="618.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1092.0" />
+      <Label layoutX="501.0" layoutY="27.0" prefHeight="34.0" prefWidth="158.0" text="Supplier Form" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="100.0" text="Supplier Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSid" layoutX="219.0" layoutY="95.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="650.0" layoutY="98.0" text="Name:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtsname" layoutX="720.0" layoutY="93.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="143.0" layoutY="149.0" text="Address:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSaddress" layoutX="219.0" layoutY="145.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="588.0" layoutY="149.0" prefHeight="21.0" prefWidth="124.0" text="Contact Number:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtScontactNumber" layoutX="720.0" layoutY="144.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="128.0" layoutY="198.0" text="Username:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSUsername" layoutX="219.0" layoutY="193.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TableView fx:id="SuplierTable" layoutX="124.0" layoutY="328.0" prefHeight="263.0" prefWidth="844.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="100.0" text="Supplier Id" />
+            <TableColumn fx:id="colName" prefWidth="210.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="248.0" text="Address" />
+            <TableColumn fx:id="colContactNumber" prefWidth="184.0" text="Contact Number" />
+            <TableColumn fx:id="colUsername" prefWidth="101.0" text="Username" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="735.0" layoutY="262.0" onAction="#btnAddSuplierOnAction" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #36454f;" text="Add Supplier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="580.0" layoutY="262.0" onAction="#btnSearchSiplierOnAction" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: #28bab7;" text="Search Supplier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="274.0" layoutY="262.0" onAction="#btnADeleteSuplierOnAction" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: Red;" text="Delete Supplier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="431.0" layoutY="262.0" onAction="#btnUpdateSuplierOnAction" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #f1c232;" text="Update Supplier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

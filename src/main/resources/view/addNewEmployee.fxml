@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootaddNewEmployee" prefHeight="600.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.addNewEmployeeController">
+   <children>
+      <Rectangle fx:id="btnClear" arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1092.0" />
+      <Label layoutX="444.0" layoutY="35.0" prefHeight="35.0" prefWidth="224.0" text="Add New Employee" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="106.0" text="Employee Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEid" layoutX="220.0" layoutY="103.0" onAction="#txtAddEmployeeIdOnAction" prefHeight="34.0" prefWidth="306.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="661.0" layoutY="106.0" text="Name:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEname" layoutX="727.0" layoutY="99.0" prefHeight="34.0" prefWidth="297.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="142.0" layoutY="172.0" text="Address:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEaddress" layoutX="220.0" layoutY="165.0" prefHeight="34.0" prefWidth="306.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="584.0" layoutY="172.0" prefHeight="21.0" prefWidth="123.0" text="Contact Number:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEcontactNumber" layoutX="727.0" layoutY="165.0" prefHeight="34.0" prefWidth="297.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="142.0" layoutY="233.0" text="JobRole:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEjobRole" layoutX="220.0" layoutY="225.0" prefHeight="34.0" prefWidth="306.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="632.0" layoutY="232.0" text="Username:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" layoutX="727.0" layoutY="225.0" prefHeight="34.0" prefWidth="297.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TableView fx:id="addemployeetable" layoutX="54.0" layoutY="336.0" prefHeight="241.0" prefWidth="967.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="131.0" text="Employee Id" />
+            <TableColumn fx:id="colName" prefWidth="169.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="219.0" text="Address" />
+            <TableColumn fx:id="colContactNumber" prefWidth="164.0" text="Contact Number" />
+            <TableColumn fx:id="colJobRole" prefWidth="124.0" text="JobRole" />
+            <TableColumn fx:id="colUsername" prefWidth="159.0" text="Username" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="666.0" layoutY="283.0" onAction="#btnAddEmployeeOnAction" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: #36454f;" text="ADD EMPLOYEE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="523.0" layoutY="283.0" onAction="#btnClearOnAction" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: #28bab7;" text="CLEAR" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

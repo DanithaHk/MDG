@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootOrderFrom" prefHeight="618.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OrderpageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d5e1ed" height="618.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1092.0" />
+      <Label layoutX="154.0" layoutY="93.0" text="Order Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="443.0" layoutY="28.0" prefHeight="34.0" prefWidth="137.0" text=" Order Form" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOid" layoutX="233.0" layoutY="89.0" onAction="#txtAddOrderIdOnAction" prefHeight="29.0" prefWidth="260.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="582.0" layoutY="93.0" text="Client Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOclientId" layoutX="666.0" layoutY="89.0" onAction="#txtAddOrderIdOnAction" prefHeight="29.0" prefWidth="248.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="163.0" layoutY="136.0" text="Name:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOname" layoutX="233.0" layoutY="132.0" onAction="#txtAddOrderIdOnAction" prefHeight="29.0" prefWidth="260.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="611.0" layoutY="136.0" text="Date:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOdate" layoutX="666.0" layoutY="132.0" onAction="#txtAddOrderIdOnAction" prefHeight="29.0" prefWidth="248.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="179.0" layoutY="179.0" text="Qty:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOqty" layoutX="233.0" layoutY="175.0" onAction="#txtAddOrderIdOnAction" prefHeight="29.0" prefWidth="260.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TableView fx:id="orderTable" layoutX="211.0" layoutY="317.0" prefHeight="268.0" prefWidth="724.0">
+         <columns>
+            <TableColumn prefWidth="125.0" text="Order Id" />
+            <TableColumn prefWidth="129.0" text="Client Id" />
+            <TableColumn prefWidth="225.0" text="Name" />
+            <TableColumn prefWidth="130.0" text="Date" />
+            <TableColumn prefWidth="114.0" text="Qty" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="777.0" layoutY="239.0" onAction="#btnAddOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #36454f;" text="Add Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="614.0" layoutY="239.0" onAction="#btnSearchOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #28bab7;" text="Search Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="280.0" layoutY="239.0" onAction="#btnDeleteOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: red;" text="Delete Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="449.0" layoutY="239.0" onAction="#btnUpdateOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #f1c232;" text="Update Employee" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

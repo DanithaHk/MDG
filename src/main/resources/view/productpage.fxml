@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootProductForm" prefHeight="618.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ProductpageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="618.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1092.0" />
+      <Label layoutX="471.0" layoutY="27.0" prefHeight="34.0" prefWidth="151.0" text=" ProductForm" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="168.0" layoutY="95.0" text="Product Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPid" layoutX="262.0" layoutY="91.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-insets: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="613.0" layoutY="95.0" text="Description:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPDescription" layoutX="718.0" layoutY="90.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-insets: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="149.0" layoutY="148.0" text="Cost per one:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPCostPerOne" layoutX="262.0" layoutY="143.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-insets: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="824.0" layoutY="213.0" onAction="#btnAddProductOnAction" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #36454f;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tableProduct" layoutX="149.0" layoutY="298.0" prefHeight="294.0" prefWidth="832.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="182.0" text="Product Id" />
+            <TableColumn fx:id="colDescription" prefWidth="459.0" text="Description" />
+            <TableColumn fx:id="colCostPerOne" prefWidth="190.0" text="Cost per one" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="625.0" layoutY="213.0" onAction="#btnSeachOnAction" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #28bab7;" text="Seach" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="416.0" layoutY="213.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #f1c232;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="207.0" layoutY="213.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

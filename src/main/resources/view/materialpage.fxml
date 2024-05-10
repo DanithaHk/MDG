@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootMaterial" prefHeight="618.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.MaterialpageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="618.0" layoutX="-1.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1092.0" />
+      <Label layoutX="467.0" layoutY="35.0" prefHeight="34.0" prefWidth="157.0" text="Material Form" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="133.0" layoutY="109.0" text="Material Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMid" layoutX="225.0" layoutY="104.0" onAction="#txtAddMaterialIdOnAction" prefHeight="30.0" prefWidth="280.0" style="-fx-border-insets: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="593.0" layoutY="109.0" text="Description:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMdescription" layoutX="694.0" layoutY="104.0" prefHeight="30.0" prefWidth="280.0" style="-fx-border-insets: #42275a;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="181.0" layoutY="165.0" text="Qty :" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMqty" layoutX="225.0" layoutY="160.0" prefHeight="30.0" prefWidth="280.0" style="-fx-border-insets: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="588.0" layoutY="166.0" text="Cost per unit:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMCostPerUnit" layoutX="694.0" layoutY="161.0" prefHeight="30.0" prefWidth="280.0" style="-fx-background-radius: #36454f;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TableView fx:id="materialtable" layoutX="142.0" layoutY="316.0" prefHeight="239.0" prefWidth="837.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="147.0" text="Material Id" />
+            <TableColumn fx:id="colDesc" prefWidth="430.0" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="102.0" text="Qty" />
+            <TableColumn fx:id="colCostPErUnit" prefWidth="157.0" text="Cost per one" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="681.0" layoutY="231.0" onAction="#btnAddMaterialtOnAction" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #36454f;" text="Add Material" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="546.0" layoutY="231.0" onAction="#btnSearchMaterialOnAction" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #28bab7;" text="Search Material" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="411.0" layoutY="231.0" onAction="#btnUpdateMaterialOnAction" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #f1c232;" text="Update Material" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="272.0" layoutY="231.0" onAction="#btnDeleteMaterialOnAction" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="Delete Material" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootTarget" prefHeight="618.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.TargetpageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="618.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1098.0" />
+      <Label layoutX="512.0" layoutY="16.0" prefHeight="34.0" prefWidth="138.0" text="Target From" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="90.0" text="Traget Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTid" layoutX="272.0" layoutY="85.0" onAction="#txtTidOnAction" prefHeight="30.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="602.0" layoutY="88.0" text="Traget Name:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTname" layoutX="709.0" layoutY="83.0" prefHeight="30.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="214.0" layoutY="138.0" text="Date :" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTdate" layoutX="272.0" layoutY="134.0" prefHeight="30.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="222.0" layoutY="188.0" text="Eid:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTEid" layoutX="272.0" layoutY="183.0" prefHeight="30.0" prefWidth="270.0" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="551.0" layoutY="138.0" text="Traget Cover Or Not:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableTarget" layoutX="120.0" layoutY="309.0" prefHeight="274.0" prefWidth="886.0">
+         <columns>
+            <TableColumn fx:id="colTrargetId" prefWidth="111.0" text="Target Id" />
+            <TableColumn fx:id="colTragetName" prefWidth="281.0" text="Target Name" />
+            <TableColumn fx:id="colDate" prefWidth="212.0" text="Date" />
+            <TableColumn fx:id="colTragetCoverOrNot" prefWidth="164.0" text="Target Cover Or Not" />
+            <TableColumn fx:id="colEid" minWidth="0.0" prefWidth="116.0" text="Eid" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="778.0" layoutY="249.0" onAction="#btnSaveTargetOnAction" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #36454f;" text="Save Target" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="280.0" layoutY="249.0" onAction="#btnUpdateTargetOnAction" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #f1c232;" text="Update Target" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="445.0" layoutY="249.0" onAction="#btnDeleteTargetOnAction" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: red;" text="Delete Target" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="611.0" layoutY="249.0" onAction="#btnSearchTargetOnAction" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #28bab7;" text="Search Target" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtTCoverOrNot" layoutX="709.0" layoutY="134.0" prefHeight="30.0" prefWidth="270.0" promptText="YES Or Not" style="-fx-background-color: #ffffff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+   </children>
+</AnchorPane>
