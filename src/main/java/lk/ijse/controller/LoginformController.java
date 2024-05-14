@@ -23,6 +23,8 @@ public class LoginformController {
     public TextField txtPassword;
     @FXML
     private AnchorPane rootNode;
+    static String user = null;
+
 
 
     public void btnLoginOnAction(ActionEvent event) throws IOException {
@@ -32,6 +34,7 @@ public class LoginformController {
 
         try {
             checkCredential(userId, pw);
+
         } catch (SQLException e ) {
             new Alert(Alert.AlertType.ERROR, "OOPS! something went wrong").show();
         }
@@ -47,7 +50,7 @@ public class LoginformController {
         ResultSet resultSet = pstm.executeQuery();
         if(resultSet.next()) {
             String dbPw = resultSet.getString(2);
-
+            user = userId;
             if(dbPw.equals(pw)) {
                 navigateToTheDashboard();
 

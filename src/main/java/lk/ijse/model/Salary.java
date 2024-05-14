@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Order_detail {
-    private String oid;
-    private String cid;
-    private String cNumber;
-    private String pid;
-    private String pName;
-    private double unitPrice;
-    private int qty;
+public class Salary {
+    private String sId;
+    private String eId;
+    private String name;
     private String date;
+    private double basicSalary;
+    private double bouns;
     private double total;
 }

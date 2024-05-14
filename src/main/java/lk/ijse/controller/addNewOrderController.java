@@ -114,7 +114,6 @@ public class addNewOrderController {
         colOdate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colOqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         coltotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-        colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
     }
     private void loadNextOrderId() {
         try {
@@ -158,9 +157,8 @@ public class addNewOrderController {
         String oId = txtOid.getText();
         String name = txtOproductName.getText();
         String date = txtOdate.getText();
-        int qty = Integer.parseInt((txtQty.getText()));
-        System.out.println(qty);
         String cid = txtOclientId.getText();
+        int qty = Integer.parseInt(txtQty.getText());
 
             var order = new Order(oId, name, date,qty,cid);
 
@@ -175,8 +173,9 @@ public class addNewOrderController {
                         tm.getPId(),
                         tm.getPName(),
                         tm.getUnitPrice(),
+                        tm.getQty(),
                         tm.getDate(),
-                        tm.getQty()
+                        tm.getTotal()
                 );
                 odList.add(od);
             }
@@ -199,28 +198,13 @@ public class addNewOrderController {
         String oId = txtOid.getText();
         String cNumber = txtCnumber.getText();
         String cId = txtOclientId.getText();
-        String pId = String.valueOf(cmbProductId.getValue());
+        String pId = cmbProductId.getValue();
         String pName = txtOproductName.getText();
         double unitPrice = Double.parseDouble(txtOUnitPRrce.getText());
         int qty = Integer.parseInt((txtQty.getText()));
         String date = txtOdate.getText();
         double total = qty * unitPrice;
-        JFXButton btnRemove = new JFXButton("remove");
-        btnRemove.setCursor(Cursor.HAND);
 
-        btnRemove.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
-
-            if(type.orElse(no) == yes) {
-                int selectedIndex = tblcart.getSelectionModel().getSelectedIndex();
-                cartList.remove(selectedIndex);
-                tblcart.refresh();
-                calculateNetTotal();
-            }
-        });
         for (int i = 0; i < tblcart.getItems().size(); i++) {
             if (pId.equals(colPid.getCellData(i))) {
                 qty += cartList.get(i).getQty();
@@ -231,17 +215,15 @@ public class addNewOrderController {
 
                 tblcart.refresh();
                 calculateNetTotal();
-                /*txtQty.setText("");*/
                 return;
             }
         }
-        CartTm cartTm = new CartTm( oId, cId, cNumber , pId , pName , unitPrice ,qty ,date ,total, btnRemove);
+        CartTm cartTm = new CartTm( oId, cId, cNumber , pId , pName , unitPrice ,qty ,date ,total);
         System.out.println(cartTm.toString());
 
         cartList.add(cartTm);
 
         tblcart.setItems(cartList);
-        txtQty.setText("");
         calculateNetTotal();
     }
 

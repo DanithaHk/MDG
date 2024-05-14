@@ -87,7 +87,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView fx:id="tblcart" layoutX="47.0" layoutY="342.0" prefHeight="216.0" prefWidth="1020.0">
+      <TableView fx:id="tblcart" layoutX="69.0" layoutY="341.0" prefHeight="216.0" prefWidth="956.0">
         <columns>
           <TableColumn fx:id="colOid" prefWidth="81.0" text="Order Id" />
           <TableColumn fx:id="colCid" prefWidth="86.0" text="Client Id" />
@@ -98,7 +98,6 @@
             <TableColumn fx:id="colOqty" prefWidth="62.0" text="Qty" />
             <TableColumn fx:id="colOdate" prefWidth="109.0" text="Date" />
             <TableColumn fx:id="coltotal" prefWidth="148.0" text="Total" />
-            <TableColumn fx:id="colAction" prefWidth="64.0" text="Action" />
         </columns>
       </TableView>
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="892.0" layoutY="567.0" onAction="#btnAddOrderOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #36454f;" text="Add Order" textFill="WHITE">

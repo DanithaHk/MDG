@@ -25,7 +25,7 @@
                 <TableColumn fx:id="colName" prefWidth="306.0" text="Name" />
                   <TableColumn fx:id="colDate" prefWidth="194.0" text="Date" />
                   <TableColumn fx:id="colPersentOrNot" prefWidth="178.0" text="Present Or Not" />
-                  <TableColumn fx:id="colEmployeeId" prefWidth="203.0" text="Employee Id" />
+                  <TableColumn fx:id="colEid" prefWidth="203.0" text="Employee Id" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -265,7 +265,7 @@
             <Image url="@../asserts.icon/icons8-male-user-48.png" />
          </image>
       </ImageView>
-      <TextField fx:id="user" layoutX="965.0" layoutY="7.0" onAction="#userOnAction" opacity="0.81" prefHeight="25.0" prefWidth="94.0" promptText="user" />
+      <TextField fx:id="lbluser" layoutX="965.0" layoutY="7.0" onAction="#userOnAction" opacity="0.81" prefHeight="25.0" prefWidth="94.0" />
       <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="577.0" onAction="#btViewReport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="View Reports">
          <font>
             <Font name="System Bold" size="14.0" />

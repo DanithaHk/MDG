@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DashbordController {
@@ -64,7 +65,10 @@ public class DashbordController {
     private TableColumn<?, ?> colDate;
 
     @FXML
-    private TableColumn<?, ?> colEmployeeId;
+    private TextField lbluser;
+
+    @FXML
+    private TableColumn<?, ?> colEid;
 
     @FXML
     private TableColumn<?, ?> colId;
@@ -85,18 +89,23 @@ public class DashbordController {
     private List<Attendence> attendenceList = new ArrayList<>();
 
     public void initialize() throws SQLException {
-        this.attendenceList= getAllAttendence();
+        this.attendenceList= getTodayAttendence();
         setCellValueFactory();
         loadAttendenceTable();
         setDate();
+        setuser();
+    }
+
+    private void setuser() {
+        lbluser.setText(LoginformController.user);
     }
 
 
-
-    private java.util.List<Attendence> getAllAttendence() {
+    private List<Attendence> getTodayAttendence() {
         List<Attendence> attendenceList = null;
+        String today = String.valueOf(LocalDate.now());
         try {
-            attendenceList = AttendenceRepo.getAll();
+            attendenceList = AttendenceRepo.getTodayAttendence( today);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -108,7 +117,7 @@ public class DashbordController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colPersentOrNot.setCellValueFactory(new PropertyValueFactory<>("presentOrNot"));
-        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colEid.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
     }
     private void loadAttendenceTable() {
         ObservableList<AttendenceTm> tmList = FXCollections.observableArrayList();
@@ -119,7 +128,7 @@ public class DashbordController {
                     attendence.getName(),
                     attendence.getDate(),
                     attendence.getPresentOrNot(),
-                    attendence.getEmployeeId()
+                    attendence.getEmployeeid()
 
             );
 
@@ -162,7 +171,8 @@ public class DashbordController {
     }
 
     @FXML
-    void btSalary(ActionEvent event) {
+    void btSalary(ActionEvent event) throws IOException {
+        setUi("salaryForm.fxml");
 
     }
 

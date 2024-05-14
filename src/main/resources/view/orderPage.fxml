@@ -70,22 +70,14 @@
       </TextField>
       <TableView fx:id="orderTable" layoutX="211.0" layoutY="317.0" prefHeight="268.0" prefWidth="724.0">
          <columns>
-            <TableColumn prefWidth="125.0" text="Order Id" />
-            <TableColumn prefWidth="129.0" text="Client Id" />
-            <TableColumn prefWidth="225.0" text="Name" />
-            <TableColumn prefWidth="130.0" text="Date" />
-            <TableColumn prefWidth="114.0" text="Qty" />
+            <TableColumn fx:id="colOid" prefWidth="125.0" text="Order Id" />
+            <TableColumn fx:id="colCid" prefWidth="129.0" text="Client Id" />
+            <TableColumn fx:id="colName" prefWidth="225.0" text="Name" />
+            <TableColumn fx:id="colDate" prefWidth="130.0" text="Date" />
+            <TableColumn fx:id="clQty" prefWidth="114.0" text="Qty" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="777.0" layoutY="239.0" onAction="#btnAddOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #36454f;" text="Add Order" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="614.0" layoutY="239.0" onAction="#btnSearchOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #28bab7;" text="Search Order" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="685.0" layoutY="239.0" onAction="#btnSearchOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #28bab7;" text="Search Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -101,7 +93,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="449.0" layoutY="239.0" onAction="#btnUpdateOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #f1c232;" text="Update Employee" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="484.0" layoutY="239.0" onAction="#btnUpdateOrderOnAction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-color: #f1c232;" text="Update Employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 public class AddOrderRepo {
 
     public static boolean addOrder(AddOrder ad) throws SQLException {
+        System.out.println(ad);
+        System.out.println("ad");
         Connection connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 

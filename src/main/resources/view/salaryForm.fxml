@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootSalary" prefHeight="618.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SalaryFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4e1ee" height="618.0" stroke="BLACK" strokeType="INSIDE" width="1094.0" />
+      <Label layoutX="484.0" layoutY="36.0" prefHeight="34.0" prefWidth="126.0" text="Salary Form" textFill="#3c3939" underline="true">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="165.0" layoutY="106.0" text="Salary Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSid" layoutX="242.0" layoutY="100.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #fff #073763fff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="591.0" layoutY="106.0" text="Employee Id:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbEmployeeId" layoutX="711.0" layoutY="101.0" onAction="#cmbEmpolyeeIdOnAction" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: white;" />
+      <Label layoutX="112.0" layoutY="155.0" text="Employee Name:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmployeeName" layoutX="242.0" layoutY="148.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="645.0" layoutY="153.0" text="Date:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDate" layoutX="711.0" layoutY="151.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="635.0" layoutY="208.0" text="Bouns:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBouns" layoutX="711.0" layoutY="203.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="146.0" layoutY="208.0" text="Basic salary:" textFill="#363232">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBasicSalary" layoutX="242.0" layoutY="203.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TableView fx:id="tblsalary" layoutX="130.0" layoutY="346.0" prefHeight="216.0" prefWidth="858.0">
+         <columns>
+            <TableColumn fx:id="colSId" prefWidth="95.0" text="Salary Id" />
+            <TableColumn fx:id="colEid" prefWidth="92.0" text="Employee Id" />
+            <TableColumn fx:id="colEmployeeName" prefWidth="148.0" text="Employee Name" />
+            <TableColumn fx:id="colDate" prefWidth="120.0" text="Date" />
+            <TableColumn fx:id="colBasicSalary" prefWidth="153.0" text="Basic Salary" />
+            <TableColumn fx:id="colBonus" prefWidth="90.0" text="Bouns" />
+            <TableColumn fx:id="colTotal" prefWidth="158.0" text="Total" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="770.0" layoutY="276.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: #36454f;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="770.0" layoutY="276.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: #36454f;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="603.0" layoutY="277.0" onAction="#btnSearchOnAction" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: #28bab7;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="445.0" layoutY="277.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="288.0" layoutY="276.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: #f1c232;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

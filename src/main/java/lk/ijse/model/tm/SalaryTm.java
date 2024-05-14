@@ -8,15 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CartTm {
-
-    private String oId;
-    private String cId;
-    private String cNumber;
-    private String pId;
-    private String pName;
-    private double unitPrice;
-    private int qty;
+public class SalaryTm {
+    private String sId;
+    private String eId;
+    private String name;
     private String date;
+    private double basicSalary;
+    private double bouns;
     private double total;
 }

@@ -12,6 +12,6 @@ public class OrderTm {
     private String name;
     private String date;
     private int qty;
-    private int cid;
-    private double total;
+    private String cid;
+
 }

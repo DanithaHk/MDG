@@ -2,6 +2,7 @@ package lk.ijse.repository;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Employee;
+import lk.ijse.model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,5 +99,42 @@ public class EmployeeRepo {
             employeeList.add(employee);
         }
         return employeeList;
+    }
+
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT eid FROM employee";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            idList.add(resultSet.getString(1));
+        }
+        return idList;
+    }
+
+    public static Employee searchById(String id) throws SQLException {
+        String sql = "SELECT * FROM employee WHERE eid = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Employee(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            );
+        }
+        return null;
     }
 }

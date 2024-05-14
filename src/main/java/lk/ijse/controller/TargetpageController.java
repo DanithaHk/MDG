@@ -113,7 +113,7 @@ public class TargetpageController {
         String tCoverOrNot = txtTCoverOrNot.getText();
         String eid = txtTEid.getText();
 
-        TargetDetail targetDetail = new TargetDetail(tid,name,eid,date,tCoverOrNot);
+        TargetDetail targetDetail = new TargetDetail(tid,name,date,tCoverOrNot,eid);
         boolean isSaved = false;
         try {
             isSaved = TargetDetailRepo.save(targetDetail);

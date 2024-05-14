@@ -86,7 +86,7 @@ public class AttendenceController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colPersentOrNot.setCellValueFactory(new PropertyValueFactory<>("presentOrNot"));
-        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
     }
     private void loadAttendenceTable() {
         ObservableList<AttendenceTm> tmList = FXCollections.observableArrayList();
@@ -97,7 +97,7 @@ public class AttendenceController {
                     attendence.getName(),
                     attendence.getDate(),
                     attendence.getPresentOrNot(),
-                    attendence.getEmployeeId()
+                    attendence.getEmployeeid()
 
             );
 
@@ -173,7 +173,7 @@ public class AttendenceController {
                 txtAName.setText(attendence.getName());
                 txtADate.setText(attendence.getDate());
                 txtAPresentOrNot.setText(String.valueOf(attendence.getPresentOrNot()));
-                txtAEmployeeId.setText(attendence.getEmployeeId());
+                txtAEmployeeId.setText(attendence.getEmployeeid());
 
             }
         } catch (SQLException e) {

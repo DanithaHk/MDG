@@ -13,6 +13,6 @@ public class Attendence {
     private String name;
     private String date;
     private int presentOrNot;
-    private String employeeId;
+    private String employeeid;
 
 }
