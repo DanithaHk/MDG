@@ -17,20 +17,24 @@ public class AddOrderRepo {
         try {
             boolean isOrderSaved = OrderRepo.save(ad.getOrder());
             if (isOrderSaved) {
-                boolean isOrderDetailSaved = OrderDetailRepo.save(ad.getOdList());
-                if (isOrderDetailSaved) {
-                    connection.commit();
-                    return true;
+                boolean isMaterialDetailSaved = MaterialDetailRepo.save(ad.getMaterialDetail());
+                System.out.println(isMaterialDetailSaved);
+                if (isMaterialDetailSaved) {
+                    boolean isOrderDetailSaved = OrderDetailRepo.save(ad.getOdList());
+                    if (isOrderDetailSaved) {
+                        connection.commit();
+                        return true;
+                    }
                 }
             }
-            connection.rollback();
-            return false;
-        } catch (Exception e) {
-            connection.rollback();
-            return false;
-        } finally {
-            connection.setAutoCommit(true);
+                connection.rollback();
+                return false;
+            } catch (Exception e) {
+                connection.rollback();
+                return false;
+            } finally {
+                connection.setAutoCommit(true);
+            }
         }
-    }
 }
 

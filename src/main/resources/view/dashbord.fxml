@@ -110,7 +110,7 @@
                </padding>
             </JFXButton>
          </children></AnchorPane>
-      <JFXButton fx:id="Attendece" layoutX="8.0" layoutY="94.0" onAction="#btattendece" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Attendece">
+      <JFXButton fx:id="Attendece" layoutX="8.0" layoutY="108.0" onAction="#btattendece" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Attendece">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -125,7 +125,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Orders" buttonType="RAISED" layoutX="8.0" layoutY="140.0" onAction="#Orders" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Orders     ">
+      <JFXButton fx:id="Orders" buttonType="RAISED" layoutX="8.0" layoutY="159.0" onAction="#Orders" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Orders     ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -140,7 +140,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Salary" buttonType="RAISED" layoutX="8.0" layoutY="188.0" onAction="#btSalary" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Salary      ">
+      <JFXButton fx:id="Salary" buttonType="RAISED" layoutX="8.0" layoutY="210.0" onAction="#btSalary" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Salary      ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -155,7 +155,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Clients" buttonType="RAISED" layoutX="9.0" layoutY="283.0" onAction="#btClients" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: white;" text="Clients      ">
+      <JFXButton fx:id="Clients" buttonType="RAISED" layoutX="8.0" layoutY="311.0" onAction="#btClients" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: white;" text="Clients      ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -170,7 +170,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Products" buttonType="RAISED" layoutX="8.0" layoutY="236.0" onAction="#btProducts" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Products  ">
+      <JFXButton fx:id="Products" buttonType="RAISED" layoutX="8.0" layoutY="261.0" onAction="#btProducts" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Products  ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -185,7 +185,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Transport" buttonType="RAISED" layoutX="8.0" layoutY="381.0" onAction="#btTransport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Transport ">
+      <JFXButton fx:id="Transport" buttonType="RAISED" layoutX="8.0" layoutY="414.0" onAction="#btTransport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Transport ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -200,22 +200,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Suppliers" buttonType="RAISED" layoutX="8.0" layoutY="429.0" onAction="#btSuppliers" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Suppliers  ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="24.0">
-               <image>
-                  <Image url="@../asserts.icon/icons8-client.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="477.0" onAction="#btTarget" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Target     ">
+      <JFXButton buttonType="RAISED" layoutX="8.0" layoutY="465.0" onAction="#btTarget" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Target     ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -230,7 +215,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Employee" buttonType="RAISED" layoutX="8.0" layoutY="332.0" onAction="#btEmployee" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Employee  ">
+      <JFXButton fx:id="Employee" buttonType="RAISED" layoutX="8.0" layoutY="363.0" onAction="#btEmployee" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Employee  ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -245,7 +230,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="Material" buttonType="RAISED" layoutX="7.0" layoutY="528.0" onAction="#btMaterial" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Material   ">
+      <JFXButton fx:id="Material" buttonType="RAISED" layoutX="8.0" layoutY="515.0" onAction="#btMaterial" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="Material   ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -266,7 +251,7 @@
          </image>
       </ImageView>
       <TextField fx:id="lbluser" layoutX="965.0" layoutY="7.0" onAction="#userOnAction" opacity="0.81" prefHeight="25.0" prefWidth="94.0" />
-      <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="577.0" onAction="#btViewReport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="View Reports">
+      <JFXButton buttonType="RAISED" layoutX="8.0" layoutY="564.0" onAction="#btViewReport" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: white;" text="View Reports">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -281,7 +266,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="logout" buttonType="RAISED" layoutX="5.0" layoutY="620.0" onAction="#btloglout" prefHeight="27.0" prefWidth="135.0" style="-fx-background-color: red;" text="Logout" textFill="WHITE">
+      <JFXButton fx:id="logout" buttonType="RAISED" layoutX="6.0" layoutY="617.0" onAction="#btloglout" prefHeight="27.0" prefWidth="135.0" style="-fx-background-color: red;" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

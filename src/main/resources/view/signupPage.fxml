@@ -61,11 +61,11 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <PasswordField layoutX="355.0" layoutY="334.0" prefHeight="36.0" prefWidth="476.0" promptText="Enter your Email" style="-fx-border-insets: #073763;" />
       <ImageView layoutX="539.0" layoutY="76.0">
          <image>
             <Image url="@../asserts.icon/icons8-user-100.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtUserId1" layoutX="354.0" layoutY="340.0" prefHeight="34.0" prefWidth="478.0" promptText="Enter your Email" style="-fx-border-insets: #073763;" />
     </children>
 </AnchorPane>

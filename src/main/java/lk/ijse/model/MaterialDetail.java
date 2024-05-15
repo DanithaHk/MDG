@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class AddOrder {
-    private Order order;
-    private List<Order_detail> odList;
-    private MaterialDetail materialDetail;
+public class MaterialDetail {
+    private String oId;
+    private String desc;
+    private String mId;
+    private int materialQty;
 }

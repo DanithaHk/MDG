@@ -44,6 +44,8 @@ public class MaterialpageController {
 
     @FXML
     private TextField txtMCostPerUnit;
+    @FXML
+    private TextField txtUsername;
 
     @FXML
     private TextField txtMdescription;
@@ -70,8 +72,8 @@ public class MaterialpageController {
                     material.getId(),
                     material.getDescription(),
                     material.getQty(),
-                    material.getCostPerOne()
-
+                    material.getCostPerOne(),
+                    material.getUsername()
             );
 
             tmList.add(materialTm);
@@ -95,8 +97,9 @@ public class MaterialpageController {
         String desc = txtMdescription.getText();
         int qty = Integer.parseInt(txtMqty.getText());
         Double costPUnit = Double.valueOf(txtMCostPerUnit.getText());
+        String username = txtUsername.getText();
 
-        Material material = new Material(id, desc, qty, costPUnit);
+        Material material = new Material(id, desc, qty, costPUnit,username);
 
         boolean isSaved = false;
 
@@ -172,9 +175,10 @@ public class MaterialpageController {
         String name = txtMdescription.getText();
         int qty = Integer.parseInt(txtMqty.getText());
         double costPerUnit = Double.parseDouble(txtMCostPerUnit.getText());
+        String username = txtUsername.getText();
 
 
-        Material material = new Material(id,name,qty,costPerUnit);
+        Material material = new Material(id,name,qty,costPerUnit,username);
 
         boolean isUpdate = false;
         try {

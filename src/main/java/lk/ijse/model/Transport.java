@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 public class Transport {
-    private String id;
+    private String tid;
     private String date;
     private String area;
 }

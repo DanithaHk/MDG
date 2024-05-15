@@ -1,41 +1,31 @@
 package lk.ijse.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.model.Material;
+import lk.ijse.model.PlaceTransport;
 import lk.ijse.model.Transport;
-import lk.ijse.model.tm.MaterialTm;
-import lk.ijse.model.tm.TransportTm;
-import lk.ijse.repository.MaterialRepo;
-import lk.ijse.repository.TargetRepo;
-import lk.ijse.repository.TransportRepo;
+import lk.ijse.model.TransportDetail;
+import lk.ijse.model.tm.TransportCartTm;
+import lk.ijse.repository.EmployeeRepo;
+import lk.ijse.repository.PlaceTransportRepo;
 
-import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TransportController {
 
-
+        @FXML
+        private TableView<TransportCartTm> TableCartTransport;
 
         @FXML
-        private TableView<TransportTm> TableTransport;
-
-        @FXML
-        private JFXButton btnBack;
+        private ComboBox<String> cmbEmployeId;
 
         @FXML
         private TableColumn<?, ?> colArea;
@@ -44,7 +34,13 @@ public class TransportController {
         private TableColumn<?, ?> colDate;
 
         @FXML
+        private TableColumn<?, ?> colEmployeeId;
+
+        @FXML
         private TableColumn<?, ?> colId;
+
+        @FXML
+        private AnchorPane rootTransport;
 
         @FXML
         private TextField txtTArea;
@@ -54,149 +50,106 @@ public class TransportController {
 
         @FXML
         private TextField txtTid;
-
-        @FXML
-        private AnchorPane rootTransport;
-        private List<Transport> transportList = new ArrayList<>();
-
+        private ObservableList<TransportCartTm> TcartList = FXCollections.observableArrayList();
         public void initialize() throws SQLException {
-                this.transportList = getallTransport();
                 setCellValueFactory();
-                loadTransportTable();
-        }
-
-        private void loadTransportTable() {
-                ObservableList<TransportTm> tmList = FXCollections.observableArrayList();
-
-                for (Transport transport : transportList) {
-                        TransportTm transportTm = new TransportTm(
-                                transport.getId(),
-                                transport.getDate(),
-                                transport.getArea()
-                        );
-                        tmList.add(transportTm);
-                }
-
-                TableTransport.setItems(tmList);
-                TransportTm selectedItem = (TransportTm) TableTransport.getSelectionModel().getSelectedItem();
-
-
+                setDate();
+                getEmployeeIds();
         }
 
         private void setCellValueFactory() {
-                colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+                colId.setCellValueFactory(new PropertyValueFactory<>("tId"));
                 colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
                 colArea.setCellValueFactory(new PropertyValueFactory<>("area"));
-
+                colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("eId"));
         }
 
+        private void setDate() {
+                LocalDate now = LocalDate.now();
+                txtTDate.setText(String.valueOf(now));
+        }
 
-        private List<Transport> getallTransport() {
-                List<Transport> transportList = null;
+        private void getEmployeeIds() {
+
+                ObservableList<String> obList = FXCollections.observableArrayList();
+
                 try {
-                        transportList = TransportRepo.getAll();
+                        List<String> idList = EmployeeRepo.getIds();
+
+                        for (String id : idList) {
+                                obList.add(id);
+                        }
+                        cmbEmployeId.setItems(obList);
+
                 } catch (SQLException e) {
                         throw new RuntimeException(e);
                 }
-                return transportList;
         }
 
         @FXML
-        void btnAddTransportOnAction(ActionEvent event) {
-                String id = txtTid.getText();
+        void btnAddToCartOnAction(ActionEvent event) {
+                String tId = txtTid.getText();
                 String date = txtTDate.getText();
                 String area = txtTArea.getText();
+                String eid = cmbEmployeId.getValue();
 
-                Transport transport = new Transport(id,date,area);
-                boolean isSaved = false;
-                try {
-                        isSaved = TransportRepo.save(transport);
-                        if (isSaved) {
-                                new Alert(Alert.AlertType.CONFIRMATION, "Employee saved!").show();
-                                initialize();
-                                clear();
-
-                        }
-                } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-                }
-
-        }
-
-        @FXML
-        void btnBackOnAction(ActionEvent event) throws IOException {
-                AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashbord.fxml"));
-
-
-                Scene scene = new Scene(rootNode);
-                Stage stage = (Stage) this.rootTransport.getScene().getWindow();
-                stage.setScene(scene);
-                stage.centerOnScreen();
-                stage.setTitle("MDG GARMENT");
-
+                TransportCartTm transportCartTm = new TransportCartTm(tId,date,area,eid);
+                TcartList.add(transportCartTm);
+                TableCartTransport.setItems(TcartList);
         }
 
         @FXML
         void btnDeleteTrasnsportOnAction(ActionEvent event) {
-                String id = txtTid.getText();
 
-                boolean isDeleted = false;
-                try {
-                        isDeleted = TransportRepo.delete(id);
-                        if (isDeleted) {
-                                new Alert(Alert.AlertType.CONFIRMATION, "Deleted!").show();
-                                initialize();
-                                clear();
-                        }
-                } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                }
         }
 
         @FXML
-        void btnSearchTransportOnAction(ActionEvent event) {
-                String id = txtTid.getText();
-                Transport transport = null;
-                try {
-                        transport = TransportRepo.search(id);
-                        if (transport != null) {
-                                txtTDate.setText(transport.getDate());
-                                txtTArea.setText(transport.getArea());
-                        }
-
-                } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                }
-        }
-
-        @FXML
-        void btnUpdateTransportOnAction(ActionEvent event) {
-                String id = txtTid.getText();
+        void btnSaveTransportOnAction(ActionEvent event) {
+                String tId = txtTid.getText();
                 String date = txtTDate.getText();
                 String area = txtTArea.getText();
+                String eid = cmbEmployeId.getValue();
 
+                var transport = new Transport(tId,date,area);
 
-                Transport transport = new Transport(id,date,area);
+                List<TransportDetail> tdList = new ArrayList<>();
+                for (int i = 0; i < TableCartTransport.getItems().size(); i++) {
+                        TransportCartTm tm = TcartList.get(i);
 
-                boolean isUpdate = false;
+                        TransportDetail td = new TransportDetail(
+                                tm.getTId(),
+                                tm.getDate(),
+                                tm.getEId()
+                        );
+                        tdList.add(td);
+                }
+                PlaceTransport pt = new PlaceTransport(transport,tdList);
                 try {
-                        isUpdate = TransportRepo.update(transport);
-                        if(isUpdate) {
-                                new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
-                                initialize();
-                                clear();
+                        boolean iSaved = PlaceTransportRepo.placeTransport(pt);
+                        if(iSaved) {
+                                new Alert(Alert.AlertType.CONFIRMATION, "Transport Saved!").show();
+                        } else {
+                                new Alert(Alert.AlertType.WARNING, "Transport Not Saved!").show();
                         }
                 } catch (SQLException e) {
                         new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
 
         }
-        public void clear(){
-                txtTid.clear();
-                txtTDate.clear();
-                txtTArea.clear();
+
+        @FXML
+        void btnSearchTransportOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void btnUpdateTransportOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void cmbEmployeIdOnAction(ActionEvent event) {
+
         }
 
 }
-
-

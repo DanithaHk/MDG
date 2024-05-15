@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Employee;
 import lk.ijse.model.Material;
+import lk.ijse.model.MaterialDetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.util.List;
 public class MaterialRepo {
 
     public static boolean save(Material material) throws SQLException {
-        String sql = "INSERT INTO material VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO material VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -22,6 +23,7 @@ public class MaterialRepo {
         pstm.setObject(2, material.getDescription());
         pstm.setObject(3, material.getQty());
         pstm.setObject(4, material.getCostPerOne());
+        pstm.setObject(5, material.getUsername());
 
         return pstm.executeUpdate() > 0;
     }
@@ -40,8 +42,9 @@ public class MaterialRepo {
             String description = resultSet.getString(2);
             int qty = Integer.parseInt(resultSet.getString(3));
             double costPerUnit = Double.valueOf(resultSet.getString(4));
+            String username = resultSet.getString(5);
 
-            Material material = new Material(id, description, qty, costPerUnit);
+            Material material = new Material(id, description, qty, costPerUnit,username);
             materialList.add(material);
         }
         return materialList;
@@ -73,7 +76,8 @@ public class MaterialRepo {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getInt(3),
-                    resultSet.getDouble(4)
+                    resultSet.getDouble(4),
+                    resultSet.getString(5)
 
                     );
         } else {
@@ -82,7 +86,7 @@ public class MaterialRepo {
     }
 
     public static boolean update(Material material) throws SQLException {
-        String sql = "UPDATE material SET description=?, qty=?, costPerOne=? WHERE mid=?";
+        String sql = "UPDATE material SET description=?, qty=?, costPerOne=?, usename = ? WHERE mid=?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -91,8 +95,30 @@ public class MaterialRepo {
         pstm.setObject(2, material.getQty());
         pstm.setObject(3, material.getCostPerOne());
         pstm.setObject(4, material.getId());
+        pstm.setObject(5, material.getUsername());
 
         return pstm.executeUpdate() > 0;
     }
 
+    public static Material searchBycNumber(String materialName) throws SQLException {
+
+        String sql = "SELECT * FROM material WHERE description = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setObject(1, materialName);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Material(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getInt(3),
+                    resultSet.getDouble(4),
+                    resultSet.getString(5)
+            );
+
+        }
+        return null;
+    }
 }

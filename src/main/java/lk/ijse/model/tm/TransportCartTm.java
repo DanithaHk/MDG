@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MaterialTm {
-    private String id;
-    private String description;
-    private int qty;
-    private Double costPerOne;
-    private String username;
+public class TransportCartTm {
+    private String tId;
+    private String date;
+    private String area;
+    private String eId;
 }

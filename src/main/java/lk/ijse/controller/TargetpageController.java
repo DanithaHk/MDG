@@ -116,6 +116,7 @@ public class TargetpageController {
         TargetDetail targetDetail = new TargetDetail(tid,name,date,tCoverOrNot,eid);
         boolean isSaved = false;
         try {
+            System.out.println(targetDetail);
             isSaved = TargetDetailRepo.save(targetDetail);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Target saved!").show();

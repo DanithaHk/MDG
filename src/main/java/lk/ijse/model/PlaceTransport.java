@@ -8,8 +8,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class AddOrder {
-    private Order order;
-    private List<Order_detail> odList;
-    private MaterialDetail materialDetail;
+public class PlaceTransport {
+    private Transport transport;
+    private List<TransportDetail> tdList;
+
+
 }

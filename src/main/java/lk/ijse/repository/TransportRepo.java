@@ -18,7 +18,7 @@ public class TransportRepo {
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
-        pstm.setObject(1, transport.getId());
+        pstm.setObject(1, transport.getTid());
         pstm.setObject(2, transport.getDate());
         pstm.setObject(3, transport.getArea());
 
@@ -85,7 +85,7 @@ public class TransportRepo {
 
         pstm.setObject(1, transport.getDate());
         pstm.setObject(2, transport.getArea());
-        pstm.setObject(3, transport.getId());
+        pstm.setObject(3, transport.getTid());
 
         return pstm.executeUpdate() > 0;
     }

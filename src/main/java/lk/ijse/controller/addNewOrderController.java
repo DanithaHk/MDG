@@ -10,19 +10,19 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.db.DbConnection;
 import lk.ijse.model.*;
 import lk.ijse.model.tm.CartTm;
-import lk.ijse.repository.AddOrderRepo;
-import lk.ijse.repository.ClientRepo;
-import lk.ijse.repository.OrderRepo;
-import lk.ijse.repository.ProductRepo;
+import lk.ijse.repository.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class addNewOrderController {
 
@@ -31,6 +31,9 @@ public class addNewOrderController {
 
     @FXML
     private JFXComboBox<String> cmbProductId;
+    @FXML
+    private JFXComboBox<String> cmbMaterialName;
+
 
     @FXML
     private TableColumn<?, ?> colAction;
@@ -40,6 +43,9 @@ public class addNewOrderController {
 
     @FXML
     private TableColumn<?, ?> colOContactNumber;
+
+    @FXML
+    private TableColumn<?, ?> colMaterialQty;
 
     @FXML
     private TableColumn<?, ?> colOdate;
@@ -67,6 +73,12 @@ public class addNewOrderController {
 
     @FXML
     private AnchorPane root;
+
+    @FXML
+    private TextField txtMaterialId;
+
+    @FXML
+    private TextField txtMterialQty;
 
     @FXML
     private TableView<CartTm> tblcart;
@@ -99,9 +111,24 @@ public class addNewOrderController {
         setCellValueFactory();
         loadNextOrderId();
         getProductIds();
+        getMaterialIds();
         setDate();
     }
 
+    private void getMaterialIds() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> mIdList = MaterialDetailRepo.getMIds();
+            for (String id : mIdList) {
+                obList.add(id);
+            }
+
+            cmbMaterialName.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     private void setCellValueFactory() {
@@ -114,6 +141,7 @@ public class addNewOrderController {
         colOdate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colOqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         coltotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colMaterialQty.setCellValueFactory(new PropertyValueFactory<>("materialQtyTotal"));
     }
     private void loadNextOrderId() {
         try {
@@ -159,9 +187,14 @@ public class addNewOrderController {
         String date = txtOdate.getText();
         String cid = txtOclientId.getText();
         int qty = Integer.parseInt(txtQty.getText());
+        String desc = cmbMaterialName.getValue();
+        String mId = txtMaterialId.getText();
+        int materialQty = Integer.parseInt(txtMterialQty.getText());
+
 
             var order = new Order(oId, name, date,qty,cid);
-
+            MaterialDetail materialDetail = new MaterialDetail(oId, desc, mId, materialQty);
+    System.out.println(materialDetail);
             List<Order_detail> odList = new ArrayList<>();
             for (int i = 0; i < tblcart.getItems().size(); i++) {
                 CartTm tm = cartList.get(i);
@@ -180,7 +213,7 @@ public class addNewOrderController {
                 odList.add(od);
             }
 
-            AddOrder ad = new AddOrder (order, odList);
+            AddOrder ad = new AddOrder (order, odList , materialDetail);
             try {
                 boolean isPlaced = AddOrderRepo.addOrder(ad);
                 if(isPlaced) {
@@ -203,7 +236,11 @@ public class addNewOrderController {
         double unitPrice = Double.parseDouble(txtOUnitPRrce.getText());
         int qty = Integer.parseInt((txtQty.getText()));
         String date = txtOdate.getText();
+        String materialName = cmbMaterialName.getValue();
+        String materialId = txtMaterialId.getText();
+        int materialQty = Integer.parseInt(txtMterialQty.getText());
         double total = qty * unitPrice;
+        String matirialQtyTotal = materialQty * qty +"m";
 
         for (int i = 0; i < tblcart.getItems().size(); i++) {
             if (pId.equals(colPid.getCellData(i))) {
@@ -218,8 +255,7 @@ public class addNewOrderController {
                 return;
             }
         }
-        CartTm cartTm = new CartTm( oId, cId, cNumber , pId , pName , unitPrice ,qty ,date ,total);
-        System.out.println(cartTm.toString());
+        CartTm cartTm = new CartTm( oId, cId, cNumber , pId , pName , unitPrice ,qty ,date ,total, matirialQtyTotal);
 
         cartList.add(cartTm);
 
@@ -257,6 +293,20 @@ public class addNewOrderController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    void cmbMaterialNameOnAction(ActionEvent event) {
+        String materialName = cmbMaterialName.getValue();
+        try {
+            Material materialDetail = MaterialRepo.searchBycNumber(materialName);
+            System.out.println(materialDetail);
+            if (materialDetail != null) {
+                txtMaterialId.setText(materialDetail.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void setDate() {
         LocalDate now = LocalDate.now();
         txtOdate.setText(String.valueOf(now));
@@ -269,6 +319,26 @@ public class addNewOrderController {
         }
         lblNetTotal.setText(String.valueOf(netTotal));
     }
+    @FXML
+    void btnGenarateQuotationOnAction(ActionEvent event) throws JRException, SQLException {
+        JasperDesign jasperDesign =
+                JRXmlLoader.load("src/main/resources/Report/MDGQuatation.jrxml");
+        JasperReport jasperReport =
+                JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+       // data.put("CustomerID",txtId.getText());
+
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        data,
+                        DbConnection.getInstance().getConnection());
+
+        JasperViewer.viewReport(jasperPrint,false);
+    }
+
     public void clear(){
 
     }

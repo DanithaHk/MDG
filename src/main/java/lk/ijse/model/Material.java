@@ -11,4 +11,5 @@ public class Material {
         private String description;
         private int qty;
         private Double costPerOne;
+        private String username;
 }

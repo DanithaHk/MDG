@@ -19,4 +19,5 @@ public class CartTm {
     private int qty;
     private String date;
     private double total;
+    private String materialQtyTotal;
 }

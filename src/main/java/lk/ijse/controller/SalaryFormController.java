@@ -53,6 +53,7 @@ public class SalaryFormController {
 
     @FXML
     private TableView<SalaryTm> tblsalary;
+
     @FXML
     private TextField txtBasicSalary;
 
@@ -146,10 +147,10 @@ public class SalaryFormController {
             Attendence attendence = AttendenceRepo.searchByEId(id);
             if (attendence != null) {
                 int dateCount = AttendenceRepo.getdateCount(id);
-                if (dateCount >= 20) {
+                if (dateCount >= 25) {
                     txtBouns.setText(String.valueOf(5000));
                 }
-                if (dateCount < 20) {
+                if (dateCount < 25) {
                     txtBouns.setText("0");
                 }
             }
@@ -276,6 +277,7 @@ public class SalaryFormController {
             throw new RuntimeException(e);
         }
     }
+
     private void setDate() {
         LocalDate now = LocalDate.now();
         txtDate.setText(String.valueOf(now));

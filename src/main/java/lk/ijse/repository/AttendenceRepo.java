@@ -29,7 +29,7 @@ public class AttendenceRepo {
 
 
     public static List<Attendence> getAll() throws SQLException {
-        String sql = "SELECT * FROM attendance  ";
+        String sql = "SELECT * FROM attendance ORDER BY aid asc ";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
