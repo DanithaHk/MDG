@@ -2,7 +2,7 @@ package lk.ijse.repository;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Order;
-import lk.ijse.model.Salary;
+import lk.ijse.model.Order_detail;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class OrderRepo {
     }
 
     public static boolean save(Order order) throws SQLException {
+        System.out.println(order);
         String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
@@ -75,24 +76,29 @@ public class OrderRepo {
 
     }
 
-    public static List<Order> getAll() throws SQLException {
-        String sql = "SELECT * FROM orders";
+    public static List<Order_detail> getAll() throws SQLException {
+        String sql = "SELECT * FROM order_detail";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();
 
-        List<Order> orderList = new ArrayList<>();
+        List<Order_detail> orderList = new ArrayList<>();
         while (resultSet.next()) {
             String oId = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String date = resultSet.getString(3);
-            int qty = Integer.parseInt(resultSet.getString(4));
-            String cid = resultSet.getString(5);
+            String cId = resultSet.getString(2);
+            String contactNumber = resultSet.getString(3);
+            String pId = resultSet.getString(4);
+            String productName = resultSet.getString(5);
+            double unitPrice = resultSet.getDouble(6);;
+            int qty = resultSet.getInt(7);;
+            String date = resultSet.getString(8);
+            String nededSwingCloth = resultSet.getString(9);
+            double total = resultSet.getDouble(10);
 
-            Order order = new Order(oId,name, date, qty, cid);
-            orderList.add(order);
+            Order_detail orderDetail = new Order_detail(oId,cId,contactNumber,pId,productName,unitPrice, qty,date,nededSwingCloth,total);
+            orderList.add(orderDetail);
         }
         return orderList;
 

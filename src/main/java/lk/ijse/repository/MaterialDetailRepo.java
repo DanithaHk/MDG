@@ -3,6 +3,7 @@ package lk.ijse.repository;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.Client;
 import lk.ijse.model.MaterialDetail;
+import lk.ijse.model.Order_detail;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -31,14 +32,14 @@ public class MaterialDetailRepo {
         return codeList;
     }
 
-    public static boolean save(MaterialDetail materialDetail) throws SQLException {
+    public static boolean save(MaterialDetail md) throws SQLException {
         String sql = "INSERT INTO material_detail VALUES(?, ?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
-        pstm.setString(1, materialDetail.getOId());
-        pstm.setString(2, materialDetail.getDesc());
-        pstm.setString(3, materialDetail.getMId());
-        pstm.setInt(4, materialDetail.getMaterialQty());
+        pstm.setString(1, md.getOId());
+        pstm.setString(2, md.getDesc());
+        pstm.setString(3, md.getMId());
+        pstm.setInt(4, md.getMaterialQty());
 
         return pstm.executeUpdate() > 0;
     }

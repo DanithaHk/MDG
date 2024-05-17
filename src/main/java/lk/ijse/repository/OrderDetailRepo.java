@@ -20,7 +20,7 @@ public class OrderDetailRepo {
     }
 
     private static boolean save(Order_detail od) throws SQLException {
-        String sql = "INSERT INTO order_detail VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO order_detail VALUES(?, ?, ?, ?, ?, ?, ?, ?, ? , ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
         pstm.setString(1, od.getOid());
@@ -31,7 +31,8 @@ public class OrderDetailRepo {
         pstm.setDouble(6, od.getUnitPrice());
         pstm.setInt(7, od.getQty());
         pstm.setDate(8, Date.valueOf(od.getDate()));
-        pstm.setDouble(9, od.getTotal());
+        pstm.setString(9, od.getNededSwingCloth());
+        pstm.setDouble(10, od.getTotal());
 
 
         return pstm.executeUpdate() > 0;

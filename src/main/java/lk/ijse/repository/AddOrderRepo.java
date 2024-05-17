@@ -16,11 +16,13 @@ public class AddOrderRepo {
 
         try {
             boolean isOrderSaved = OrderRepo.save(ad.getOrder());
+            System.out.println(isOrderSaved);
             if (isOrderSaved) {
                 boolean isMaterialDetailSaved = MaterialDetailRepo.save(ad.getMaterialDetail());
-                System.out.println(isMaterialDetailSaved);
+                System.out.println("Md"+isMaterialDetailSaved);
                 if (isMaterialDetailSaved) {
                     boolean isOrderDetailSaved = OrderDetailRepo.save(ad.getOdList());
+                    System.out.println("od"+isOrderDetailSaved);
                     if (isOrderDetailSaved) {
                         connection.commit();
                         return true;

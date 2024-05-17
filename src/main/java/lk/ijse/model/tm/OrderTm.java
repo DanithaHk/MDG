@@ -9,9 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class OrderTm {
     private String oId;
+    private String cId;
+    private String pId;
     private String name;
-    private String date;
+    private double unitPrice;
     private int qty;
-    private String cid;
+    private String date;
+
 
 }

@@ -1,5 +1,8 @@
 package lk.ijse.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.db.DbConnection;
 
 import java.awt.*;
@@ -17,6 +21,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class LoginformController {
     public TextField txtUserId;
@@ -26,9 +31,11 @@ public class LoginformController {
     static String user = null;
 
 
+    public void initialize(){
 
+    }
     public void btnLoginOnAction(ActionEvent event) throws IOException {
-
+        boolean isValidate = validateLogin();
         String userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
@@ -37,6 +44,30 @@ public class LoginformController {
 
         } catch (SQLException e ) {
             new Alert(Alert.AlertType.ERROR, "OOPS! something went wrong").show();
+        }
+    }
+
+    private boolean validateLogin() {
+        int num = 0;
+        String userId = txtUserId.getText();
+        boolean isUserIdValidate = Pattern.matches("[A-z]{3,}", userId);
+        if (!isUserIdValidate) {
+            // new Alert(Alert.AlertType.ERROR, "INVALID Name").show();
+            num = 1;
+            vibrateTextField(txtUserId);
+        }
+        String pw = txtPassword.getText();
+        boolean isPwValidate = Pattern.matches("[A-z0-9]{3,}", pw);
+        if (!isPwValidate){
+            num =1;
+            vibrateTextField(txtPassword);
+        }
+        if (num == 1) {
+            num = 0;
+            return false;
+        } else {
+            num = 0;
+            return true;
         }
     }
 
@@ -80,6 +111,29 @@ public class LoginformController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("MDG GARMENTS");
+    }
+    private void vibrateTextField(TextField textField) {
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(0), new KeyValue(textField.translateXProperty(), 0)),
+                new KeyFrame(Duration.millis(50), new KeyValue(textField.translateXProperty(), -6)),
+                new KeyFrame(Duration.millis(100), new KeyValue(textField.translateXProperty(), 6)),
+                new KeyFrame(Duration.millis(150), new KeyValue(textField.translateXProperty(), -6)),
+                new KeyFrame(Duration.millis(200), new KeyValue(textField.translateXProperty(), 6)),
+                new KeyFrame(Duration.millis(250), new KeyValue(textField.translateXProperty(), -6)),
+                new KeyFrame(Duration.millis(300), new KeyValue(textField.translateXProperty(), 6)),
+                new KeyFrame(Duration.millis(350), new KeyValue(textField.translateXProperty(), -6)),
+                new KeyFrame(Duration.millis(400), new KeyValue(textField.translateXProperty(), 0))
+
+        );
+
+        textField.setStyle("-fx-border-color: red;");
+        timeline.play();
+
+        Timeline timeline1 = new Timeline(
+                new KeyFrame(Duration.seconds(3), new KeyValue(textField.styleProperty(), "-fx-border-color: #bde0fe;"))
+        );
+
+        timeline1.play();
     }
 }
 

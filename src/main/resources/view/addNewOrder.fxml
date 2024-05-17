@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -24,7 +26,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtOid" layoutX="232.0" layoutY="82.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #fff #073763fff;">
+      <TextField fx:id="txtOid" layoutX="232.0" layoutY="82.0" onKeyReleased="#txtKeyRelease" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #fff #073763fff;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -34,7 +36,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCnumber" layoutX="708.0" layoutY="82.0" onAction="#txtClientContactNumberOnAction" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+      <TextField fx:id="txtCnumber" layoutX="708.0" layoutY="82.0" onAction="#txtClientContactNumberOnAction" prefHeight="30.0" prefWidth="267.0" style="-fx-background-color: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -118,7 +120,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtOclientId" layoutX="232.0" layoutY="128.0" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
+      <TextField fx:id="txtOclientId" layoutX="232.0" layoutY="128.0" onKeyReleased="#txtKeyRelease" prefHeight="30.0" prefWidth="267.0" style="-fx-border-insets: #073763;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -143,13 +145,20 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="740.0" layoutY="568.0" onAction="#btnGenarateQuotationOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #36454f;" text="Genarate Quotation" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="721.0" layoutY="568.0" onAction="#btnGenarateQuotationOnAction" onKeyReleased="#txtKeyRelease" prefHeight="20.0" prefWidth="166.0" style="-fx-background-color: #36454f;" text="Genarate Quotation" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../asserts.icon/icons8-print-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXComboBox fx:id="cmbMaterialName" layoutX="232.0" layoutY="263.0" onAction="#cmbMaterialNameOnAction" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: white;" />
       <Label layoutX="110.0" layoutY="267.0" text="Material Name:" textFill="#363232">
@@ -177,5 +186,20 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="581.0" layoutY="568.0" onAction="#btnSendMailOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #36454f;" text="Send Mail" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="38.0">
+               <image>
+                  <Image url="@../../../../../../Pictures/Camera%20Roll/icons8-email-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

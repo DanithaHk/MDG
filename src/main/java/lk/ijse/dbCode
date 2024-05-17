@@ -1,0 +1,134 @@
+CREATE DATABASE MDG;
+USE MDG;
+
+CREATE TABLE user (
+	username varchar(10) PRIMARY KEY,
+	password varchar(30)
+);
+
+CREATE TABLE employee (
+ eid varchar(10) PRIMARY KEY,
+ name varchar(30),
+ address varchar(50),
+ contactNumber varchar(10),
+ jobRole varchar(20),
+ username varchar(10),
+ FOREIGN KEY (username) REFERENCES user(username)
+);
+
+CREATE TABLE attendance (
+	aid varchar(10) PRIMARY KEY,
+name varchar(30),
+	date date ,
+	presentOrNot int(5),
+	eid varchar(10),
+	 FOREIGN KEY (eid) REFERENCES employee(eid)
+);
+
+CREATE TABLE target (
+	tid varchar(10) PRIMARY KEY,
+	tName varchar(30),
+	date date
+
+);
+CREATE TABLE target_detail  (
+	tid varchar(10),
+	 FOREIGN KEY (tid) REFERENCES target(tid),
+	tName varchar(30),
+	date date ,
+	targetCoverOrNot varchar(10),
+	eid varchar(10),
+ FOREIGN KEY (eid) REFERENCES employee(eid)
+);
+
+
+
+CREATE TABLE salary (
+	sid  varchar(10) PRIMARY KEY,
+eid varchar(10),
+FOREIGN KEY (eid) REFERENCES employee(eid),
+	name varchar(30),
+	date date ,
+	basicSalary decimal(10,2),
+	bouns  decimal(10,2),
+	total decimal(10,2)
+
+);
+
+CREATE TABLE material (
+	mid varchar(10) PRIMARY KEY,
+	description varchar(30),
+	qty int(80),
+	costPerOne decimal(10,2),
+	username varchar(10),
+FOREIGN KEY (username) REFERENCES user(username)
+);
+
+CREATE TABLE client (
+	cid  varchar(10) PRIMARY KEY,
+	name varchar(30),
+address varchar(50),
+contactNumber varchar(10),
+	email  varchar(40)
+);
+
+CREATE TABLE transport (
+	tid varchar(10) PRIMARY KEY,
+	date date,
+	area varchar(50)
+);
+
+CREATE TABLE orders (
+	oid varchar(10) PRIMARY KEY,
+	name varchar(30),
+	date date ,
+	qty int(100),
+	cid  varchar(10),
+	FOREIGN KEY (cid) REFERENCES client(cid) ON DELETE CASCADE ON UPDATE  CASCADE
+);
+
+CREATE TABLE material_detail (
+	 oid varchar(10),
+	 FOREIGN KEY (oid) REFERENCES orders(oid ) ON DELETE CASCADE ON  UPDATE  CASCADE,
+	description varchar(30),
+	mid varchar(10),
+	FOREIGN KEY (mid) REFERENCES material (mid) ON DELETE CASCADE ON UPDATE CASCADE,
+	qty int(100)
+	);
+
+CREATE TABLE product (
+pid varchar(10) PRIMARY KEY,
+	description varchar(30),
+	costPerOneShirt decimal(10,2)
+);
+
+
+CREATE TABLE order_detail (
+	 oid varchar(10),
+	 FOREIGN KEY (oid) REFERENCES orders(oid) ON DELETE CASCADE ON UPDATE CASCADE,
+	cid  varchar(10),
+	FOREIGN KEY (cid) REFERENCES client(cid) ON DELETE CASCADE ON UPDATE CASCADE,
+	contactNumber varchar(10),
+pid varchar(10),
+	 FOREIGN KEY (pid) REFERENCES product(pid) ON DELETE CASCADE ON  UPDATE CASCADE,
+	productName varchar(10),
+	unitPrice  decimal(10,2),
+	qty int(100),
+	date date,
+	nededSwingCloth varchar(10),
+	total decimal(20,2)
+
+
+);
+
+
+CREATE TABLE transport_detail (
+	tid varchar(10),
+	 FOREIGN KEY (tid) REFERENCES transport(tid) ON DELETE CASCADE UPDATE ON CASCADE,
+	date date,
+	eid varchar(10),
+FOREIGN KEY (eid) REFERENCES employee(eid)ON DELETE CASCADE ON UPDATE CASCADE,
+
+);
+
+

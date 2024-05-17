@@ -17,10 +17,14 @@ import lk.ijse.model.Employee;
 import lk.ijse.model.tm.AddEmployeeTm;
 import lk.ijse.repository.AddEmployeeRepo;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class addNewEmployeeController {
 
@@ -66,8 +70,12 @@ public class addNewEmployeeController {
     @FXML
     private TextField txtUsername;
     private List<Employee> employeeList = new ArrayList<>();
+    private LinkedHashMap<TextField,Pattern> map =new LinkedHashMap<>();
 
     public void initialize() throws SQLException {
+        Pattern patternId = Pattern.compile("^(E0)[0-9]{5}$");
+        map.put(txtEid,patternId);
+
         this.employeeList = getAllEmployees();
         setCellValueFactory();
         loadClientTable();
@@ -164,6 +172,11 @@ public class addNewEmployeeController {
        txtEcontactNumber.clear();
        txtEjobRole.clear();
        txtUsername.clear();
+    }
+    @FXML
+    void txtKeyRelese(KeyEvent event) {
+
+
     }
 
     @FXML

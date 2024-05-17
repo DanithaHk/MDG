@@ -16,5 +16,6 @@ public class Order_detail {
     private double unitPrice;
     private int qty;
     private String date;
+    private String nededSwingCloth;
     private double total;
 }

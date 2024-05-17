@@ -1,5 +1,10 @@
 package lk.ijse.controller;
+import javafx.scene.control.TextField;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
@@ -9,7 +14,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Util.SendEmail;
+import lk.ijse.Util.ValidateUtil;
 import lk.ijse.db.DbConnection;
 import lk.ijse.model.*;
 import lk.ijse.model.tm.CartTm;
@@ -19,10 +28,13 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import javax.mail.MessagingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.Pattern;
+
 
 public class addNewOrderController {
 
@@ -106,8 +118,20 @@ public class addNewOrderController {
     @FXML
     private TextField txtQty;
     private double netTotal = 0;
+    private  String mQty  = null;
+    private  String oId  = null;
     private ObservableList<CartTm> cartList = FXCollections.observableArrayList();
+    private LinkedHashMap  <TextField , Pattern >map = new LinkedHashMap<>();
     public void initialize() {
+        Pattern patternOId = Pattern.compile("^(C0)[0-9]{5}$");
+        map.put(txtOid,patternOId);
+        Pattern patternCNumber = Pattern.compile("^[0-9]{10}$");
+        map.put(txtCnumber,patternCNumber);
+        Pattern patternQty = Pattern.compile("^[0-9]{6}$");
+        map.put(txtQty,patternQty);
+        Pattern patternMQty = Pattern.compile("^[0-9]{3}$");
+        map.put(txtMterialQty,patternMQty);
+
         setCellValueFactory();
         loadNextOrderId();
         getProductIds();
@@ -146,8 +170,9 @@ public class addNewOrderController {
     private void loadNextOrderId() {
         try {
             String currentId = OrderRepo.currentId();
+            System.out.println(currentId);
             String nextId = nextId(currentId);
-
+            System.out.println(nextId);
             txtOid.setText(nextId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -156,9 +181,10 @@ public class addNewOrderController {
 
     private String nextId(String currentId) {
         if (currentId != null) {
-            String[] split = currentId.split("o");
+            String [] split = currentId.split("O");
+
             int id = Integer.parseInt(split[1]);    //2
-            return "o" + ++id;
+            return "O00" + ++id;
 
         }
         return "O1";
@@ -182,7 +208,7 @@ public class addNewOrderController {
 
     @FXML
     void btnAddOrderOnAction(ActionEvent event) {
-        String oId = txtOid.getText();
+         oId = txtOid.getText();
         String name = txtOproductName.getText();
         String date = txtOdate.getText();
         String cid = txtOclientId.getText();
@@ -208,6 +234,7 @@ public class addNewOrderController {
                         tm.getUnitPrice(),
                         tm.getQty(),
                         tm.getDate(),
+                        tm.getMaterialQtyTotal(),
                         tm.getTotal()
                 );
                 odList.add(od);
@@ -227,7 +254,7 @@ public class addNewOrderController {
     }
 
     @FXML
-    void btnAddProductOnAction(ActionEvent event) {
+    void btnAddProductOnAction() {
         String oId = txtOid.getText();
         String cNumber = txtCnumber.getText();
         String cId = txtOclientId.getText();
@@ -241,6 +268,7 @@ public class addNewOrderController {
         int materialQty = Integer.parseInt(txtMterialQty.getText());
         double total = qty * unitPrice;
         String matirialQtyTotal = materialQty * qty +"m";
+        mQty= matirialQtyTotal;
 
         for (int i = 0; i < tblcart.getItems().size(); i++) {
             if (pId.equals(colPid.getCellData(i))) {
@@ -298,7 +326,6 @@ public class addNewOrderController {
         String materialName = cmbMaterialName.getValue();
         try {
             Material materialDetail = MaterialRepo.searchBycNumber(materialName);
-            System.out.println(materialDetail);
             if (materialDetail != null) {
                 txtMaterialId.setText(materialDetail.getId());
             }
@@ -320,14 +347,24 @@ public class addNewOrderController {
         lblNetTotal.setText(String.valueOf(netTotal));
     }
     @FXML
+    void btnSendMailOnAction(ActionEvent event) throws MessagingException, IOException, JRException, SQLException {
+        Client client = new Client();
+       SendEmail.sendMail("MDG QUATITON "," hey","mdg " , "virajdilshan2019@gmail.com",getBill());
+    }
+    @FXML
     void btnGenarateQuotationOnAction(ActionEvent event) throws JRException, SQLException {
         JasperDesign jasperDesign =
-                JRXmlLoader.load("src/main/resources/Report/MDGQuatation.jrxml");
+                JRXmlLoader.load("C:\\Users\\user\\IdeaProjects\\MDG\\src\\main\\resources\\Report\\MDGGarmentQuatation.jrxml");
         JasperReport jasperReport =
                 JasperCompileManager.compileReport(jasperDesign);
 
         Map<String, Object> data = new HashMap<>();
-       // data.put("CustomerID",txtId.getText());
+        String fullBill = lblNetTotal.getText();
+
+       data.put("fullBill",fullBill);
+       data.put("materialName",cmbMaterialName.getValue());
+       data.put("materialQty",mQty);
+       data.put("orderId",oId);
 
 
         JasperPrint jasperPrint =
@@ -338,8 +375,48 @@ public class addNewOrderController {
 
         JasperViewer.viewReport(jasperPrint,false);
     }
+    private File getBill() throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\user\\IdeaProjects\\MDG\\src\\main\\resources\\Report\\MDGGarmentQuatation.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
+        Map<String, Object> data = new HashMap<>();
+        String fullBill = lblNetTotal.getText();
+
+        data.put("fullBill",fullBill);
+        data.put("materialName",cmbMaterialName.getValue());
+        data.put("materialQty",mQty);
+        data.put("orderId",oId);
+
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        data,
+                        DbConnection.getInstance().getConnection());
+
+        // Export the report to a PDF file
+        File pdfFile = new File("Order Receipt.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pdfFile.getAbsolutePath());
+
+        return pdfFile;
+    }
     public void clear(){
+        txtOid.clear();
+         txtCnumber.clear();
+        txtOclientId.clear();
+        txtOproductName.clear();
+        txtOUnitPRrce.clear();
+        txtQty.clear();
+        txtOdate.clear();
+        txtMaterialId.clear();
+        txtMterialQty.clear();
 
     }
-}
+
+    public void txtKeyRelease(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+          ValidateUtil.validation(map);
+            }
+        }
+    }
+

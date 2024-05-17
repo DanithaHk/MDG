@@ -11,10 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.model.Order;
+import lk.ijse.model.Order_detail;
 import lk.ijse.model.tm.OrderTm;
-import lk.ijse.model.tm.SalaryTm;
 import lk.ijse.repository.OrderRepo;
-import lk.ijse.repository.SalaryRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,23 +21,31 @@ import java.util.List;
 
 public class OrderpageController {
     @FXML
-    private TableColumn<?, ?> clQty;
-
-    @FXML
     private TableColumn<?, ?> colCid;
 
     @FXML
-    private TableColumn<?, ?> colDate;
+    private TableColumn<?, ?> colOContactNumber;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<?, ?> colOdate;
 
     @FXML
     private TableColumn<?, ?> colOid;
 
     @FXML
-    private TableView<OrderTm> orderTable;
+    private TableColumn<?, ?> colOqty;
 
+    @FXML
+    private TableColumn<?, ?> colPid;
+
+    @FXML
+    private TableColumn<?, ?> colPname;
+
+    @FXML
+    private TableColumn<?, ?> colUnitPrice;
+
+    @FXML
+    private TableView<OrderTm> orderTable;
     @FXML
     private AnchorPane rootOrderFrom;
 
@@ -57,7 +64,7 @@ public class OrderpageController {
     @FXML
     private TextField txtOqty;
 
-    private List<Order> orderList = new ArrayList<>();
+    private List<Order_detail> orderList = new ArrayList<>();
     public void initialize() {
         this.orderList = getAllOrders();
         loadOrderTable();
@@ -66,32 +73,38 @@ public class OrderpageController {
 
     private void setCellValueFactory() {
         colOid.setCellValueFactory(new PropertyValueFactory<>("oId"));
-        colCid.setCellValueFactory(new PropertyValueFactory<>("cid"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        clQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colCid.setCellValueFactory(new PropertyValueFactory<>("cId"));
+        colPid.setCellValueFactory(new PropertyValueFactory<>("pId"));
+        colPname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colOqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colOdate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
     }
 
     private void loadOrderTable() {
         ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
-        for (Order order : orderList) {
+        for (Order_detail order : orderList) {
             OrderTm orderTm = new OrderTm(
-                    order.getOId(),
-                    order.getName(),
-                    order.getDate(),
+                    order.getOid(),
+                    order.getCid(),
+                    order.getPid(),
+                    order.getPName(),
+                    order.getUnitPrice(),
                     order.getQty(),
-                    order.getCid()
-            );
+                    order.getDate()
 
+            );
+            System.out.println(orderTm);
             tmList.add(orderTm);
         }
         orderTable.setItems(tmList);
         OrderTm selectedItem = (OrderTm) orderTable.getSelectionModel().getSelectedItem();
     }
 
-    private List<Order> getAllOrders() {
-        List<Order> orderList = null;
+    private List<Order_detail> getAllOrders() {
+        List<Order_detail> orderList = null;
         try {
             orderList = OrderRepo.getAll();
         } catch (SQLException e) {
