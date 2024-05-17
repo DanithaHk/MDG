@@ -184,4 +184,6 @@ public class addNewEmployeeController {
     }
 
 
+    public void txtKeyRelese(javafx.scene.input.KeyEvent keyEvent) {
+    }
 }
